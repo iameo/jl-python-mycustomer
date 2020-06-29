@@ -138,14 +138,13 @@ paths:
 #            $ref: "#/definitions/Reminder"
 #        "405":
 #          description: "Invalid input"
-
   /transaction/new:
    post:
      tags:
      - "Transaction"
      summary: "Add a new transation to the customer"
      description: ""
-     operationId: endpoints.transaction.create_transaction.post
+     operationId: "endpoints.transaction.create_transaction.post"
      consumes:
      - "application/json"
      produces:
@@ -158,7 +157,7 @@ paths:
        schema:
          $ref: "#/definitions/Transaction"
      responses:
-       "201":
+       "200":
          description: "Successful operation"
          schema:
            $ref: "#/definitions/Transaction"
@@ -371,30 +370,30 @@ paths:
 #        "404":
 #          description: "Customer not found"
   /store/new:
-   post:
-     tags:
-     - "Store"
-     summary: "Add a new store to the user"
-     description: "Store object that needs to be created"
-     operationId: "endpoints.store.create.post"
-     consumes:
-     - "application/json"
-     produces:
-     - "application/json"
-     parameters:
-     - in: "body"
-       name: "body"
-       description: "Store object"
-       required: true
-       schema:
-         $ref: "#/definitions/Store"
-     responses:
-       "200":
-         description: "successful operation"
-         schema:
-           $ref: "#/definitions/Store"
-       "405":
-         description: "Invalid input"
+    post:
+      tags:
+        - "Store"
+      summary: "Add a new store to the user"
+      description: "Store object that needs to be created"
+      operationId: "endpoints.store.create.post"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Store object"
+          required: true
+          schema:
+            $ref: "#/definitions/Store"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Store"
+        "405":
+          description: "Invalid input"
   /store/{storeId}:
     get:
      tags:
@@ -481,25 +480,25 @@ paths:
           description: "Store not found"
 
   /store/all:
-    get:
-      tags:
-      - "Store"
-      summary: "List of stores"
-      description: ""
-      operationId: endpoints.store.listall.get
-      produces:
-      - "application/json"
-      responses:
-        "200":
-          description: "Successful operation"
-          schema:
-           type: "array"
-           items:
-            $ref: "#/definitions/Store"
-        "400":
-          description: "Invalid ID supplied"
-        "404":
-          description: "Store not found"
+   get:
+     tags:
+     - "Store"
+     summary: "List of stores"
+     description: ""
+     operationId: "endpoints.store.listall.get"
+     produces:
+     - "application/json"
+     responses:
+       "200":
+         description: "Successful operation"
+         schema:
+          type: "array"
+          items:
+           $ref: "#/definitions/Store"
+       "400":
+         description: "Invalid ID supplied"
+       "404":
+         description: "Store not found"
 
   /user/new:
     post:
@@ -526,34 +525,34 @@ paths:
             $ref: "#/definitions/User"
         "405":
           description: "Invalid input"
-      #security:
-      #  - api_key: []
+#      security:
+#        - api_key: []
 
-  /user/{userId}:
-    get:
-      tags:
-      - "User"
-      summary: "Find user by ID"
-      description: "Returns a single user"
-      operationId: endpoints.user.getuser.getuser
-      produces:
-      - "application/json"
-      parameters:
-      - name: "userId"
-        in: "path"
-        description: "ID of user to return"
-        required: true
-        type: "string"
-        #format: "int64"
-      responses:
-        "200":
-          description: "Successful operation"
-          schema:
-            $ref: "#/definitions/User"
-        "400":
-          description: "Invalid ID supplied"
-        "404":
-          description: "User not found"
+#  /user/{userId}:
+#    get:
+#      tags:
+#      - "User"
+#      summary: "Find user by ID"
+#      description: "Returns a single user"
+#      operationId: "getUserById"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "userId"
+#        in: "path"
+#        description: "ID of user to return"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        "200":
+#          description: "Successful operation"
+#          schema:
+#            $ref: "#/definitions/User"
+#        "400":
+#          description: "Invalid ID supplied"
+#        "404":
+#          description: "User not found"
 #  /user/update/{userId}:
 #    put:
 #      tags:
@@ -861,8 +860,6 @@ definitions:
     - "interest"
     - "total_amount"
     - "description"
-    - "customer_phone_number"
-    - "store_name"
     - "transaction_name"
     - "transaction_role"
     properties:
@@ -873,10 +870,6 @@ definitions:
       total_amount:
         type: "number"
       description:
-        type: "string"
-      customer_phone_number:
-        type: "number"
-      store_name:
         type: "string"
       transaction_name:
         type: "string"
@@ -899,19 +892,23 @@ definitions:
   Store:
     type: "object"
     required:
-    - "name"
-    - "phone"
+    - "store_name"
+    - "Phone_number"
+    - "shop_address"
+    - "tagline"
     properties:
       id:
         type: "integer"
         format: "int64"
-      name:
+      store_name:
         type: "string"
-      phone:
+      Phone_number:
         type: "string"
-      address:
+      shop_address:
         type: "string"
       tagline:
+        type: "string"
+      email:
         type: "string"
   User:
     type: "object"
