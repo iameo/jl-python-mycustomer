@@ -17,7 +17,7 @@ If you have picked an issue and are ready to contribute some code to resolve the
 - Change into the directory of the cloned repository i.e `cd jl-python-mycustomer` then do the following before starting to work on your issue.
 
   ```bash
-  git remote add upstream https://github.com/hngi/https://github.com/hngi/jl-python-mycustomer.git
+  git remote add upstream https://github.com/hngi/jl-python-mycustomer.git
   ```
 
   ```bash
@@ -29,7 +29,10 @@ If you have picked an issue and are ready to contribute some code to resolve the
   ```bash
   git checkout -b <my-chosen-feature>
   ```
-
+- Install the required packages by
+  ```bash
+  pip install -r requirements.txt
+  ```
 - Do your work.
 
 - Commit your changes. Ensure that your commit messages properly references the issue by following this style [guide](https://udacity.github.io/git-styleguide/)
@@ -52,3 +55,32 @@ If you have picked an issue and are ready to contribute some code to resolve the
   ```
 
 See you in Stage 5
+
+### Running the Unittest Scripts
+- Change into the 'test' directory in the 'jl-python-mycustomer' parent directory by carrying the following commands in the command line.
+  ```cmd
+  cd test\
+  ```
+  To run all tests together, use:
+  ```cmd
+  python -m unittest
+  ```
+  
+  To run separately, if you so choose use the following
+  - To run the Unittest scripts for the store endpoints, run the following:
+    
+    ```cmd
+      python -m unittest test_store_endpoint.py
+    ```
+  - Now to run the Unittest scripts for the transaction endpoints, run the following:
+    
+    ```cmd
+      python -m unittest test_transaction_endpoint.py
+    ```
+  - Now to run the Unittest scripts for the user endpoints, run the following:
+    
+    ```cmd
+      python -m unittest test_user_endpoint.py
+    ```
+
+  By the Senior Endpoints Testing Developer
